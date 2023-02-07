@@ -12,9 +12,9 @@ def fill_random_coeff_polynom_list(k, min_border = 0, max_border = 100):
         new_list.append(kort) 
     return new_list
 
-# Функция дополнительного "прореживания" значимых коэффициентов многочлена (рандомное обнуление)
+# Функция "прореживания" ненулевых коэффициентов многочлена (рандомное обнуление).
 # Только для списков кортежей "(степень, коэффициент)", отсортированных по убыванию степени и 
-# содержащих коэффициенты (в т.ч. равные нулю) для всех степеней, включая 0-ую степень. 
+# содержащих коэффициенты (в т.ч. равные нулю) для всех степеней, включая 0-ую. 
 def zeroing_random_coeff_polynom_list(user_list):
     max_zero = len(user_list) - 2
     num_zero = 0
@@ -36,11 +36,4 @@ def zeroing_random_coeff_polynom_list(user_list):
                 else:
                     result_list.append(user_list[i])
     return result_list
-
-                
-
-# my_list = fill_random_coeff_polynom_list(9)
-# print(my_list)
-# print(zeroing_random_coeff_polynom_list(my_list))
-
 

@@ -11,12 +11,6 @@ def fill_number_list(n, border1, border2):
         i += 1
     return new_list
 
-# def fill_number_list(n = 20, min_val = 10, max_val = 99):
-#     number_list = [random.randint(min_val, max_val)]
-#     for i in range (1, n):
-#         number_list.append(random.randint(min_val, max_val)) 
-#     return number_list
-
 def unique_values_list(user_list):
     new_list = [user_list[0]]
     for i in range(1, len(user_list)):
