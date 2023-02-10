@@ -1,16 +1,31 @@
-from Func_polinom import fill_random_coeff_polynom_list as cp
 
-# Функция для записи полинома в файлы типов .md и .txt
-def writing_file_md_txt(user_list, user_file):
+# Функция определения служебного символа для допустимых типов файлов
+def choice_simb(user_file):
     if user_file[-3:len(user_file)] == '.md':
         simb = '$'
     elif user_file[-4:len(user_file)] == '.txt':
         simb = ''
     else:
         print('Не определён тип файла. Распознаются типы: .md и txt')
+    return simb
+
+# Функция определения пути к файлу 
+def choice_path_file(in_out_sign, user_file):
+    if in_out_sign == 'in':
+        path_file = 'File_input/' + user_file
+    elif in_out_sign == 'out':
+        path_file = 'File_output/' + user_file
+    else:
+        print(f"Некорректный признак входящего-исходящего файла: {in_out_sign}.\n"\
+              "Допустимые значения: 'in'(входящий) или 'out'(исходящий)")
+    return path_file
+
+# Функция для записи полинома в файлы типов .md и .txt
+def writing_file_md_txt(in_out_sign, user_list, user_file):
+    simb = choice_simb(user_file)
     k = user_list[0][0]
-    user_file = 'File_output/' + user_file
-    with open(user_file, 'w', encoding='utf-8') as pol:
+    path_file = choice_path_file(in_out_sign, user_file)
+    with open(path_file, 'w', encoding='utf-8') as pol:
         if user_list[0][1] == 1:
             pol.write(f'{simb}x^{k}')
         else:
@@ -28,11 +43,9 @@ def writing_file_md_txt(user_list, user_file):
         pol.write(f'=0{simb}')
 
 
-
-# k = 9
-# user_list = coeff_polynom = cp(k)
-# print(user_list)
-# user_file = 'Polinom_4.txt'
-# writing_file_md_txt(user_list, user_file)
-
+# Функция присваивания строке содержимого текстового файла
+def read_file(user_file):
+    with open(user_file, 'r', encoding='utf-8') as pol:
+        result = pol.read()
+        return result
 
